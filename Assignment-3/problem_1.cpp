@@ -8,13 +8,13 @@ protected:
 public:
     Vector(int c = DEFAULT_CAPACITY, int s = 0, T v = 0){
         _elem = new T[_capacity = c];
-        for(_size = 0; _size < s; _elem[_size++] = v);
+        for (_size = 0; _size < s; _elem[_size++] = v);
     }
 
     void copyFrom(const T *A, int lo, int hi){
         _elem = new T[_capacity = 2 * (hi - lo)];
         _size = 0;
-        while(lo < hi)
+        while (lo < hi)
             _elem[_size++] = A[lo++];
     }
 
@@ -23,7 +23,7 @@ public:
     }
 
     Vector<T> &operator=(const Vector<T> &V){
-        if(_elem)
+        if (_elem)
             delete[] _elem;
         copyFrom(V._elem, 0, V.size());
         return *this;
@@ -38,20 +38,20 @@ public:
     }
 
     void expand(){
-        if(_size < _capacity)
+        if (_size < _capacity)
             return;
-        if(_capacity < DEFAULT_CAPACITY)
+        if (_capacity < DEFAULT_CAPACITY)
             _capacity = DEFAULT_CAPACITY;
         T *oldElem = _elem;
         _elem = new T[_capacity <<= 1];
-        for(int i = 0; i < _size; i++)
+        for (int i = 0; i < _size; i++)
             _elem[i] = oldElem[i];
         delete[] oldElem;
     }
 
     int insert(int r, const T &e){
         expand();
-        for(int i = _size; i > r; --i)
+        for (int i = _size; i > r; --i)
             _elem[i] = _elem[i-1];
         _elem[r] = e;
         ++_size;
@@ -63,9 +63,9 @@ public:
     }
 
     int remove(int lo, int hi){
-        if(lo == hi)
+        if (lo == hi)
             return 0;
-        while(hi < _size)
+        while (hi < _size)
             _elem[lo++] = _elem[hi++];
         _size = lo;
         return hi - lo;
@@ -99,7 +99,7 @@ bool empty()
 
 int size()
 {
-    if(empty())
+    if (empty())
         return 0;
     else
         return rear - front + 1;
@@ -107,7 +107,7 @@ int size()
 
 void enqueue(int x)
 {
-    if(empty())
+    if (empty())
     {
         rear = 0;
         front = 0;
@@ -123,11 +123,11 @@ void enqueue(int x)
 int dequeue()
 {
     int x;
-    if(empty())
+    if (empty())
     {
         return 0;
     }
-    else if(front == rear)
+    else if (front == rear)
     {
         x = front;
         front = -1;
@@ -153,7 +153,7 @@ int main()
 
     cin >> n >> m;
     int a, b;
-    for(int i = 0; i < m; ++i)
+    for (int i = 0; i < m; ++i)
     {
         scanf("%d%d", &a, &b);
         edge[a].append(b);
@@ -163,19 +163,19 @@ int main()
     enqueue(1);
     Type[1] = 1;
 
-    while(p <= n)
+    while (p <= n)
     {
         int f = dequeue();
         int t = Type[f];
-        for(int i = 0; i < edge[f].size(); ++i)
+        for (int i = 0; i < edge[f].size(); ++i)
         {
             int p2 = edge[f][i];
-            if(!Type[p2])
+            if (!Type[p2])
             {
                 enqueue(p2);
                 Type[p2] = (t == 1 ? 2 : 1);
             }
-            else if(Type[p2] == t)
+            else if (Type[p2] == t)
             {
                 cout << -1 << endl;
                 return 0;

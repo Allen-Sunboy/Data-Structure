@@ -38,7 +38,7 @@ class List{
     void insert(int n, node *Node)
     {
         node *pre = latest;
-        while(n-- > 1)
+        while (n-- > 1)
         {
             pre = pre->next;
         }
@@ -54,7 +54,7 @@ class List{
 
     ~List()
     {
-        while(_size-- > 1)
+        while (_size-- > 1)
         {
             node *x = first->next;
             x->prev->next = x->next;
@@ -78,7 +78,7 @@ int main()
     
     int c;
 
-    for(int i = 0; i < n - 1; i++)
+    for (int i = 0; i < n - 1; i++)
     {
         cin >> c;
         node *newNode = new node(c);
@@ -86,7 +86,7 @@ int main()
     }
 
     node *l = a.latestNode();
-    while(n--)
+    while (n--)
     {
         cout << l->id << " ";
         l = l->prev;

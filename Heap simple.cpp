@@ -13,7 +13,7 @@ public:
 
     Vector(T *A, int n){
         this->_data = new T[n];
-        for(int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
             this->_data[i] = A[i];
         this->_size = n;
         this->_capacity = n;
@@ -24,14 +24,14 @@ public:
     void insert(T element) { insert(this->_size, element); }
 
     void insert(int index, T element){
-        if(index < 0 || index > _size)
+        if (index < 0 || index > _size)
             return;
         
-        if(_size == _capacity)
+        if (_size == _capacity)
         {
             _capacity *= 2;
             T* new_data = new T[_capacity];
-            for(int i = 0; i < _size; i++)
+            for (int i = 0; i < _size; i++)
                 new_data[i] = move(_data[i]);
             delete[] _data;
             _data = new_data;
@@ -41,9 +41,9 @@ public:
     }
 
     void remove(int index){
-        if(index < 0 || index >= _size)
+        if (index < 0 || index >= _size)
             return;
-        for(int i = index; i < _size - 1; i++)
+        for (int i = index; i < _size - 1; i++)
             _data[i] = _data[i + 1];
         _size--;
     }
@@ -60,12 +60,12 @@ public:
     Heap(T *A, int n): Vector<T>(A, n){ heapify(); }
 
     void percolateDown(int i){
-        while(i * 2 + 1 < this->_size)
+        while (i * 2 + 1 < this->_size)
         {
             int child = i * 2 + 1;
-            if(child + 1 < this->_size && this->_data[child + 1] > this->_data[child])
+            if (child + 1 < this->_size && this->_data[child + 1] > this->_data[child])
                 child++;
-            if(this->_data[i] > this->_data[child])
+            if (this->_data[i] > this->_data[child])
                 break;
             swap(this->_data[i], this->_data[child]);
             i = child;
@@ -74,10 +74,10 @@ public:
     }
 
     void percolateUp(int i) {
-        while(i > 0)
+        while (i > 0)
         {
             int parent = (i - 1) / 2;
-            if(this->_data[i] > this->_data[parent])
+            if (this->_data[i] > this->_data[parent])
             {
                 swap(this->_data[i], this->_data[parent]);
                 i = parent;
@@ -88,14 +88,14 @@ public:
     }
 
     void heapify(){
-        for(int i = this->_size / 2 - 1; i >= 0; i--)
+        for (int i = this->_size / 2 - 1; i >= 0; i--)
             percolateDown(i);
     }
 
     T getMax(){ return this->_data[0]; }
 
     void delMax(){
-        if(this->_size == 0)
+        if (this->_size == 0)
             return;
         swap(this->_data[0], this->_data[this->_size - 1]);
         this->_size--;

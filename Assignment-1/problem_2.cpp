@@ -29,12 +29,12 @@ int main()
     int p = 0;
 
     int k;
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         scanf("%d", &k);
-        while(size == 0 || k != a[size-1])
+        while (size == 0 || k != a[size-1])
         {
-            if(size < m)
+            if (size < m)
             {
                 push(p_in++);
                 print[p++] = 0;
@@ -49,9 +49,9 @@ int main()
         print[p++] = 1;
     }
 
-    for(int i = 0; i < p; i++)
+    for (int i = 0; i < p; i++)
     {
-        if(print[i] == 0)
+        if (print[i] == 0)
         {
             printf("push\n");
         }

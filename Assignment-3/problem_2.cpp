@@ -56,7 +56,7 @@ int main()
 {
     cin >> n >> m;
     int a, b;
-    for(int i = 0; i < m; i++)
+    for (int i = 0; i < m; i++)
     {
         scanf("%d%d", &a, &b);
         Edge *newEdge = new Edge(a, b);
@@ -68,25 +68,25 @@ int main()
     int result = 0;
 
     //拓扑排序算法
-    for(int i = 1; i <= n; i++)
+    for (int i = 1; i <= n; i++)
     {
         //入度为0的点先入栈
-        if(vertex[i].indeg == 0)
+        if (vertex[i].indeg == 0)
             s.push(i);
     }
-    while(s.size() != 0)
+    while (s.size() != 0)
     {
         Vertex topV = vertex[s.pop()];
         Edge *p = topV.succEdge;
         //遍历栈顶的点的所有出边
-        while(p != nullptr)
+        while (p != nullptr)
         {
             //更新每个顶点的标记的长度
             vertex[p->v].length = max(topV.length+1, vertex[p->v].length);
             //更新最终结果
             result = max(result, vertex[p->v].length);
             vertex[p->v].indeg--;
-            if(vertex[p->v].indeg == 0)
+            if (vertex[p->v].indeg == 0)
             {
                 s.push(p->v);
             }

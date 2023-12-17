@@ -7,7 +7,7 @@ int f[16];
 void fact()
 {
     f[0] = 1;
-    for(int i = 1; i <= 15; i++)
+    for (int i = 1; i <= 15; i++)
         f[i] = f[i-1] * i;
 }
 //f[8] = 40320
@@ -20,11 +20,11 @@ const int INF = 0x3f3f3f3f;
 int Cantor(int a[], int n){
     // fact();
     int ans = 1;
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         int tmp = 0;
-        for(int j = i + 1; j < n; j++)
-            if(a[i] > a[j])
+        for (int j = i + 1; j < n; j++)
+            if (a[i] > a[j])
                 tmp++;
         ans += tmp * f[n - i - 1];
     }
@@ -39,13 +39,13 @@ void revCantor(int temp[], int x, int n){
 
     int k;
     int r = x - 1;
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         k = r / f[n - i - 1];
         r %= f[n - i - 1];
-        for(int j = 1; j <= n; j++)
+        for (int j = 1; j <= n; j++)
         {
-            if(!visit[j] && !(k--))
+            if (!visit[j] && !(k--))
             {
                 visit[j] = 1;
                 temp[i] = j;
@@ -65,14 +65,14 @@ bool visitB[40400];
 bool visitC[40400];
 
 void formA(){
-    for(int i = 1; i <= total; i++)
+    for (int i = 1; i <= total; i++)
     {
-        if(visitA[i] == 0)
+        if (visitA[i] == 0)
         {
             int temp[9];
             revCantor(temp, i, 8);
 
-            for(int j = 0, k = 7; j < k; j++, k--)
+            for (int j = 0, k = 7; j < k; j++, k--)
                 swap(temp[j], temp[k]);
             
             int res = Cantor(temp, 8);
@@ -87,9 +87,9 @@ void formA(){
 }
 
 void formB(){
-    for(int i = 1; i <= total; i++)
+    for (int i = 1; i <= total; i++)
     {
-        if(visitB[i] == 0)
+        if (visitB[i] == 0)
         {
             int temp[9];
             revCantor(temp, i, 8);
@@ -106,9 +106,9 @@ void formB(){
 }
 
 void formC(){
-    for(int i = 1; i <= total; i++)
+    for (int i = 1; i <= total; i++)
     {
-        if(visitC[i] == 0)
+        if (visitC[i] == 0)
         {
             int temp[9];
             revCantor(temp, i, 8);
@@ -138,7 +138,7 @@ public:
     }
 
     void enqueue(int x){
-        if(empty())
+        if (empty())
         {
             front = 0;
             rear = 0;
@@ -152,16 +152,16 @@ public:
     }
     
     int size(){
-        if(empty())
+        if (empty())
             return 0;
         else
             return rear - front + 1;
     }
 
     int dequeue(){
-        if(empty())
+        if (empty())
             return 0;
-        else if(front == rear)
+        else if (front == rear)
         {
             int temp = front;
             front = -1;
@@ -186,31 +186,31 @@ Queue a(50400);
 
 //从初始状态1开始搜索
 void BFS(){
-    for(int i = 1; i <= total; i++)
+    for (int i = 1; i <= total; i++)
         reach[i] = INF;
     
     reach[1] = 0;
     a.enqueue(1);
     visit[1] = 1;
 
-    while(a.size() != 0)
+    while (a.size() != 0)
     {
         int f = a.dequeue();
 
-        if(visit[ARev[f]] == 0)
+        if (visit[ARev[f]] == 0)
         {
             a.enqueue(ARev[f]);
             reach[ARev[f]] = reach[f] + 1;
             visit[ARev[f]] = 1;
             
         }
-        if(visit[BRev[f]] == 0)
+        if (visit[BRev[f]] == 0)
         {
             a.enqueue(BRev[f]);
             reach[BRev[f]] = reach[f] + 1;
             visit[BRev[f]] = 1;
         }
-        if(visit[CRev[f]] == 0)
+        if (visit[CRev[f]] == 0)
         {
             a.enqueue(CRev[f]);
             reach[CRev[f]] = reach[f] + 1;
@@ -233,9 +233,9 @@ int main()
     cin >> n;
     int a[9];
     int c;
-    while(n--)
+    while (n--)
     {
-        for(int i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++)
             cin >> a[i];
         c = Cantor(a, 8);
         

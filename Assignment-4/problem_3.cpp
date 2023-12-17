@@ -17,7 +17,7 @@ int getHash(char str[])
 {
     int hash = 0;
     int len = strlen(str);
-    for(int i = 0; i < len; i++)
+    for (int i = 0; i < len; i++)
         hash += (str[i] - 'a' + 1) * (i + 1);
     
     return hash;
@@ -29,7 +29,7 @@ char str[MAXN][45];
 int main()
 {
     cin >> n;
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         cin >> str[i];
         int hash = getHash(str[i]);
@@ -37,13 +37,13 @@ int main()
         node *p = table[hash].next;
 
         //遍历链表，查看单词是否已存在
-        while(p != nullptr)
+        while (p != nullptr)
         {
             //若找到重复单词
-            if(strcmp(p->word, str[i]) == 0)
+            if (strcmp(p->word, str[i]) == 0)
             {
                 //若为第一次重复
-                if(p->visited == 0)
+                if (p->visited == 0)
                 {
                     cout << p->word << endl;
                     p->visited = 1;
@@ -55,7 +55,7 @@ int main()
         }
 
         //若不存在该单词，则从表头插入新节点
-        if(p == nullptr)
+        if (p == nullptr)
         {
             node *s = new node;
             s->word = str[i];

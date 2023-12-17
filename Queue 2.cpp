@@ -15,7 +15,7 @@ void enqueue(int x)
     temp->data = x;
     temp->next = nullptr;
     size++;
-    if(front == nullptr && rear == nullptr)
+    if (front == nullptr && rear == nullptr)
     {
         front = rear = temp;
         return;
@@ -26,10 +26,10 @@ void enqueue(int x)
 
 void dequeue()
 {
-    if(front == nullptr)
+    if (front == nullptr)
         return;
     Node *del = front;
-    if(front == rear)
+    if (front == rear)
         front = rear = nullptr;
     else
         front = front->next;

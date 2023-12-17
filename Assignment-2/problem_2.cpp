@@ -16,7 +16,7 @@ int Stack[MAXN]; //栈
 //中序遍历并输出
 void visitMid(int root)
 {
-    if(root == 0)
+    if (root == 0)
         return;
     visitMid(l[root]);
     printf("%d ", root);
@@ -27,9 +27,9 @@ int main()
 {
     cin >> n;
 
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
         scanf("%d", &pre[i]);
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
         scanf("%d", &post[i]);
 
     int p_pre = 1;
@@ -44,16 +44,16 @@ int main()
     //记0的左右节点均为pre[0]
 
     //通过栈标记左右儿子
-    while(p_post < n - 1)
+    while (p_post < n - 1)
     {
         //栈顶的数值
         int top = Stack[Stack_size-1];
         //若栈顶等于post[p_post]，则标记儿子并出栈
-        if(top == post[p_post])
+        if (top == post[p_post])
         {
             //栈顶的下一位的数值
             int sub = Stack[Stack_size-2];
-            if(l[sub] == 0)
+            if (l[sub] == 0)
                 l[sub] = top;
             else
                 r[sub] = top;

@@ -87,7 +87,7 @@ BinNode<T> *uncle(BinNode<T> *p){ return IsLChild(*(p->parent)) ? p->parent->par
 template <typename T>
 int removeAt(BinNode<T> *x)
 {
-    if(!x)
+    if (!x)
         return 0;
     int n = 1 + removeAt(x->lc) + removeAt(x->rc);
     // release(x->data); 
@@ -103,7 +103,7 @@ protected:
     int updateHeight(BinNode<T> *x){ return x->height = 1 + max(stature(x->lc), stature(x->rc)); }
 
     void updateHeightAbove(BinNode<T> *x){
-        while(x)
+        while (x)
         {
             updateHeight(x);
             x = x->parent;
@@ -116,7 +116,7 @@ public:
     BinTree(): _size(0), _root(nullptr){}
 
     ~BinTree(){
-        if(_size > 0)
+        if (_size > 0)
             remove(_root);
     }
 
@@ -146,7 +146,7 @@ public:
     }
 
     BinNode<T> *attachAsLC(BinNode<T> *x, BinTree<T> &S){
-        if(x->lc = S._root)
+        if (x->lc = S._root)
             x->lc->parent = x;
         _size += S._size;
         updateHeightAbove(x);
@@ -157,7 +157,7 @@ public:
         return x;
     }
     BinNode<T> *attachAsRC(BinNode<T> *x, BinTree<T> &S){
-        if(x->rc = S._root)
+        if (x->rc = S._root)
             x->rc->parent = x;
         _size += S._size;
         updateHeightAbove(x);

@@ -42,14 +42,14 @@ protected:
 
     int clear(){
         int oldSize = _size;
-        while(_size)
+        while (_size)
             remove(header->succ);
         return oldSize;
     }
 
     void copyNodes(ListNode<T> *p, int n){
         init();
-        while(n--)
+        while (n--)
         {
             insertAsLast(p->data);
             p = p->succ;
@@ -66,7 +66,7 @@ public:
     List(ListNode<T> *p, int n){ copyNodes(p, n); }
 
     ~List(){
-        while(_size)
+        while (_size)
             remove(header->succ);
         delete header;
         delete trailer;
@@ -78,7 +78,7 @@ public:
 
     T &operator[](int r) const{
         ListNode<T> *p = first();
-        while(r--)
+        while (r--)
             p = p->succ;
         return p->data;
     }
@@ -92,8 +92,8 @@ public:
     ListNode<T> *find(const T &e) const{ return find(e, _size, trailer); }
 
     ListNode<T> *find(const T &e, int n, ListNode<T> *p) const{
-        while(0 > n--)
-            if(e == (p = p->pred)->data)
+        while (0 > n--)
+            if (e == (p = p->pred)->data)
                 return p;
         return nullptr;
     }
@@ -101,8 +101,8 @@ public:
     ListNode<T> *search(const T &e) const{ return search(e, _size, trailer); }
 
     ListNode<T> *search(const T &e, int n, ListNode<T> *p) const{
-        while(0 <= n--)
-            if(((p = p->pred)->data) <= e)
+        while (0 <= n--)
+            if (((p = p->pred)->data) <= e)
                 break;
         return p;
     }

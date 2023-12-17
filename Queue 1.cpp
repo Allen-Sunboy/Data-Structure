@@ -8,7 +8,7 @@ bool empty(){ return (rear == -1 && front == -1); }
 
 int size()
 {
-    if(empty())
+    if (empty())
         return 0;
     else
         return rear - front + 1;
@@ -18,7 +18,7 @@ int size()
 
 void enqueue(int x)
 {
-    if(empty())
+    if (empty())
     {
         front = 0;
         rear = 0;
@@ -33,9 +33,9 @@ void enqueue(int x)
 
 int dequeue()
 {
-    if(empty())
+    if (empty())
         return 0;
-    else if(front == rear)
+    else if (front == rear)
     {
         int temp = front;
         front = -1;

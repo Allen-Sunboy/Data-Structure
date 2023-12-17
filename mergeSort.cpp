@@ -3,23 +3,23 @@ void merge(int data[], int first, int mid, int last, int sorted[])
 {
     int i = first, j = mid;
     int k = 0;
-    while(i < mid && j < last)
-        if(data[i] < data[j])
+    while (i < mid && j < last)
+        if (data[i] < data[j])
             sorted[k++] = data[i++];
         else
             sorted[k++] = data[j++];
-    while(i < mid)
+    while (i < mid)
         sorted[k++] = data[i++];
-    while(j < last)
+    while (j < last)
         sorted[k++] = data[j++];
-    for(int v = 0; v < k; ++v)
+    for (int v = 0; v < k; ++v)
         data[first + v] = sorted[v];
 }
 
 //[first, last)
 void mergeSort(int data[], int first, int last, int sorted[])
 {
-    if(last - first <= 1)
+    if (last - first <= 1)
         return;
     int mid = (first + last) / 2;
     mergeSort(data, first, mid, sorted);

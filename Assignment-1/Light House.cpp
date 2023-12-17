@@ -16,9 +16,9 @@ long long sum = 0; //顺序对的数目
 void mergeXY(long long x[], long long y[], int l, int mid, int h)
 {
     int i = l, j = mid + 1, k = l;
-    while(i <= mid && j <= h)
+    while (i <= mid && j <= h)
     {
-        if(x[i] > x[j])
+        if (x[i] > x[j])
         {
             an[k] = x[j];
             bn[k] = y[j];
@@ -33,21 +33,21 @@ void mergeXY(long long x[], long long y[], int l, int mid, int h)
             i++;
         }
     }
-    while(i <= mid)
+    while (i <= mid)
     {
         an[k] = x[i];
         bn[k] = y[i];
         k++;
         i++;
     }
-    while(j <= h)
+    while (j <= h)
     {
         an[k] = x[j];
         bn[k] = y[j];
         k++;
         j++;
     }
-    for(int i = l; i <= h; i++)
+    for (int i = l; i <= h; i++)
     {
         x[i] = an[i];
         y[i] = bn[i];
@@ -57,7 +57,7 @@ void mergeXY(long long x[], long long y[], int l, int mid, int h)
 
 void mergeSortXY(long long x[], long long y[], int l, int h)
 {
-    if(l >= h)
+    if (l >= h)
     {
         return;
     }
@@ -70,9 +70,9 @@ void mergeSortXY(long long x[], long long y[], int l, int h)
 void mergeY(long long y[], int l, int mid, int h)
 {
     int i = l, j = mid+1, k = l;
-    while(i <= mid && j <= h)
+    while (i <= mid && j <= h)
     {
-        if(y[i] < y[j])
+        if (y[i] < y[j])
         {
             an[k++] = y[i++];
             sum += h - j + 1;
@@ -82,17 +82,17 @@ void mergeY(long long y[], int l, int mid, int h)
             an[k++] = y[j++];
         }      
     }
-    while(i <= mid)
+    while (i <= mid)
         an[k++] = y[i++];
-    while(j <= h)
+    while (j <= h)
         an[k++] = y[j++];
-    for(int i = l; i <= h; i++)
+    for (int i = l; i <= h; i++)
         y[i] = an[i];
 }
 
 void mergeSortY(long long y[], int l, int h)
 {
-    if(l >= h)
+    if (l >= h)
     {
         return;
     }
@@ -105,7 +105,7 @@ void mergeSortY(long long y[], int l, int h)
 int main()
 {
     scanf("%d", &n);
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         scanf("%lld%lld", &x[i], &y[i]);
     }

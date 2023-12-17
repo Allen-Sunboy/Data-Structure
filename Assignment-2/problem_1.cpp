@@ -13,15 +13,15 @@ int main()
 {
     cin >> n >> m;
     int p;
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         scanf("%d", &p);
         check[p] = 1;
         total[p] = 1;
     }
-    for(int i = 1; i < MAXP; i++)
+    for (int i = 1; i < MAXP; i++)
         total[i] += total[i-1];
-    for(int i = 0; i < m; i++)
+    for (int i = 0; i < m; i++)
     {
         scanf("%d%d", &l, &r);
         x = total[r] - total[l];

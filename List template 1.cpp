@@ -20,11 +20,11 @@ public:
 
     //i=0时为表头结点
     ListNode<T> *locate(int i){
-        if(i < 0 || i > _size)
+        if (i < 0 || i > _size)
             return nullptr;
         ListNode<T> *current = first;
         int k = 0;
-        while(k < i)
+        while (k < i)
         {
             current = current->next;
             k++;
@@ -34,7 +34,7 @@ public:
 
     bool insert(int i, const T &x){
         ListNode<T> *current = locate(i);
-        if(current == nullptr)
+        if (current == nullptr)
             return false;
         ListNode<T> *newNode = new ListNode<T>(x);
         newNode->next = current->next;
@@ -45,7 +45,7 @@ public:
 
     bool remove(int i, const T &x){
         ListNode<T> *current = locate(i-1);
-        if(current == nullptr)
+        if (current == nullptr)
             return false;
         ListNode<T> *del = current->next;
         current->next = del->next;
